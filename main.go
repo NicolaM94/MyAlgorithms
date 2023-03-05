@@ -6,23 +6,30 @@ import (
 )
 
 func main() {
-
 	file, err := os.ReadFile("numbers")
 	if err != nil {
 		panic(err)
 	}
-
-	container := []string{}
-	temp := ""
-
-	for _, v := range file {
-		if v == 10 {
-			container = append(container, temp)
-			temp = ""
+	var reader []string
+	var tempString string
+	for c := range file {
+		if string(file[c]) != "\n" {
+			tempString += string(file[c])
 		}
-		temp += string(v)
+		if len(tempString) == 50 {
+			reader = append(reader, tempString)
+			tempString = ""
+		}
 	}
-	container = append(container, temp)
+	for v:=range reader {
+		fmt.Println(reader[v])
+	}
 
-	fmt.Println(len(container))
+
+	var outDigits [10]int
+	counter := len(reader[0])-1
+
+	
+
+
 }
