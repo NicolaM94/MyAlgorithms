@@ -2,11 +2,22 @@
 ### Personal repository to keep track of algorithms encountered while studying and learning.
 ***
 
-### Index of content:
+### Index of pkgs:
+* arraymanipulations
+  * LeftShift: 
+  * RightShift
+  * ShiftRightToInsert
+  * ShiftLeftToInsert
 * Fibonacci
-  * Math solution
-  * Recursive solution
-  * Iterative solution
+  * FibonacciaMath
+  * FibonacciRec
+  * FibonacciIter
 * Search algorithms
   * Unordered search
+    * UnorderedSearch
   * Ordered search
+    * BinarySearchRecursive
+    * BinarySearchIterative
+ * primes
+   * Sieve
+   
