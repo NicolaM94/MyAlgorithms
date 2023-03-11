@@ -42,9 +42,9 @@ func main() {
 	fmt.Println(grid)
 
 	test := []int{0, 1, 2, 3, 4, 5}
-	test = arraymanipulation.LeftShift(test)
+	test = arraymanipulation.InsertLeft(test)
 	fmt.Println(test)
-	test = arraymanipulation.RightShift(test)
+	test = arraymanipulation.InsertRight(test)
 	fmt.Println(test)
 	test = arraymanipulation.DeleteIndex(1, test)
 	fmt.Println(test)

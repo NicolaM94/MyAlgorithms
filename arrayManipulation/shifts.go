@@ -1,7 +1,7 @@
 package arraymanipulation
 
 // Shifts an array left to delete the first item
-func LeftShift(in []int) []int {
+func InsertLeft(in []int) []int {
 	for e := 1; e < len(in); e++ {
 		in[e-1] = in[e]
 	}
@@ -9,7 +9,7 @@ func LeftShift(in []int) []int {
 }
 
 // Shift an array right to delete the last item
-func RightShift(in []int) []int {
+func InsertRight(in []int) []int {
 	for e := len(in) - 1; e >= 1; e-- {
 		in[e] = in[e-1]
 	}
