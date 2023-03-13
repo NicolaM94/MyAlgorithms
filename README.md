@@ -3,7 +3,7 @@
 ***
 
 ### Index of packages:
-* arraymanipulations
+* Arrray manipulations
   * LeftShift: 
   * RightShift
   * ShiftRightToInsert
