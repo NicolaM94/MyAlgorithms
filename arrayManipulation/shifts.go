@@ -1,7 +1,7 @@
 package arraymanipulation
 
 // Shifts an array left to delete the first item
-func InsertLeft(in []int) []int {
+func DeleteLeft (in []int) []int {
 	for e := 1; e < len(in); e++ {
 		in[e-1] = in[e]
 	}
@@ -9,7 +9,7 @@ func InsertLeft(in []int) []int {
 }
 
 // Shift an array right to delete the last item
-func InsertRight(in []int) []int {
+func DeleteRight (in []int) []int {
 	for e := len(in) - 1; e >= 1; e-- {
 		in[e] = in[e-1]
 	}
@@ -17,7 +17,7 @@ func InsertRight(in []int) []int {
 }
 
 // Delete the element at index i from the array
-func DeleteIndex[T comparable](i int, array []T) []T {
+func DeleteIndex [T comparable](i int, array []T) []T {
 	out := []T{}
 	for n := 0; n <= i-1; n++ {
 		out = append(out, array[n])
@@ -29,7 +29,7 @@ func DeleteIndex[T comparable](i int, array []T) []T {
 }
 
 // Deletes the first occurence of the element found in the array
-func DeleteElem[T comparable](s []T, k T) []T {
+func DeleteElem [T comparable](s []T, k T) []T {
 	for index := 0; index < len(s); index++ {
 		if s[index] == k {
 			return DeleteIndex(index, s)
@@ -39,7 +39,7 @@ func DeleteElem[T comparable](s []T, k T) []T {
 }
 
 // Shifts all the array values to one right and then inserts toInsert at array[0]
-func ShiftRightToInsert (array []int, toInsert int) []int {
+func ShiftRightInsertLeft (array []int, toInsert int) []int {
 
 	for i:=len(array)-2;i>=0;i-- {
 		array[i+1] = array[i]
@@ -49,7 +49,7 @@ func ShiftRightToInsert (array []int, toInsert int) []int {
 }
 
 // Shifts all the array values to one left and the inserts toInsert at the end of the array
-func ShiftLeftToInsert (array []int, toInsert int) []int {
+func ShiftLeftInsertRight (array []int, toInsert int) []int {
 
 	for i:= 1;i<=len(array)-1;i++ {
 		array[i-1] = array[i]
