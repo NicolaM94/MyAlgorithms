@@ -2,13 +2,13 @@
 ### Personal repository to keep track of algorithms encountered while studying and learning.
 ***
 
-### Index of pkgs:
+### Index of packages:
 * arraymanipulations
   * LeftShift: 
   * RightShift
   * ShiftRightToInsert
   * ShiftLeftToInsert
-* Fibonacci
+* fibonacci
   * FibonacciaMath
   * FibonacciRec
   * FibonacciIter
