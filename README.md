@@ -5,8 +5,8 @@
 
 ### Index of packages:
 * Arrray manipulations
-  * DeleteLeft : Shifts the array left deleting the first element
-  * DeleteRight : Shifts the array right deleting the last element
+  * **DeleteLeft** : Shifts the array left deleting the first element
+  * **DeleteRight** : Shifts the array right deleting the last element
   * ShiftRightToInsert : 
   * ShiftLeftToInsert
 * fibonacci
