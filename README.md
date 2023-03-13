@@ -16,7 +16,7 @@
   * Unordered search
     * UnorderedSearch
   * Ordered search
-    * BinarySearchRecursive: Recursive implementation of the classic binry search algorithm
+    * *BinarySearchRecursive*: Recursive implementation of the classic binry search algorithm
     * BinarySearchIterative: Iterative implementation of the classic binary search algorithm
  * primes
    * Sieve: Performs Erathostene's Sieve to find all prime numbers before a given integer
