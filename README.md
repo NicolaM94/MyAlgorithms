@@ -1,5 +1,6 @@
 # 📚 MyAlgorithms
 ### Personal repository to keep track of algorithms encountered while studying and learning.
+## Written in GO
 ***
 
 ### Index of packages:
