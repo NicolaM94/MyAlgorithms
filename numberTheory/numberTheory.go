@@ -11,3 +11,12 @@ func CheckTriangular(n int) bool {
 func CreateTriangular(nth int) int {
 	return nth * (nth + 1) / 2
 }
+
+func FindDivisors(n int) (out []int) {
+	for i := 1; i <= n; i++ {
+		if n%i == 0 {
+			out = append(out, i)
+		}
+	}
+	return
+}
