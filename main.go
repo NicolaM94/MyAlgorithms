@@ -2,13 +2,40 @@ package main
 
 import (
 	"fmt"
+	"myalgo/linkedlists"
 	numbertheory "myalgo/numberTheory"
 	"os"
 )
 
 func main() {
 
-	triangularExceedingN(1, 200)
+	linkedList := linkedlists.LinkedList{}
+	linkedList.Add(10)
+
+	linkedList.Add(9)
+	linkedList.Add(8)
+	linkedList.Add(7)
+	linkedList.Add(6)
+
+	current := linkedList.Head
+	for current != nil {
+		fmt.Println(current.Value)
+		current = current.Next
+	}
+	fmt.Println()
+
+	linkedList.Remove(8)
+
+	current = linkedList.Head
+	for current != nil {
+		fmt.Println(current.Value)
+		current = current.Next
+	}
+
+	linkedList.Print()
+	fmt.Println()
+	linkedList.Reverse()
+	linkedList.Print()
 
 }
 
