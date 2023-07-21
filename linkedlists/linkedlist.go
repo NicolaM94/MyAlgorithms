@@ -2,25 +2,25 @@ package linkedlists
 
 import "fmt"
 
-type listNode struct {
+type Node struct {
 	Value int
-	Next  *listNode
+	Next  *Node
 }
 
 type LinkedList struct {
-	Head *listNode
+	Head *Node
 }
 
 func (ll *LinkedList) Add(value int) {
 	if ll.Head == nil {
-		ll.Head = &listNode{Value: value}
+		ll.Head = &Node{Value: value}
 		return
 	}
 	current := ll.Head
 	for current.Next != nil {
 		current = current.Next
 	}
-	current.Next = &listNode{Value: value}
+	current.Next = &Node{Value: value}
 }
 
 func (ll *LinkedList) Remove(target int) {
@@ -52,9 +52,9 @@ func (ll *LinkedList) Print() {
 }
 
 func (ll *LinkedList) Reverse() {
-	var prev *listNode
+	var prev *Node
 	curr := ll.Head
-	var next *listNode
+	var next *Node
 	for curr != nil {
 		next = curr.Next
 		curr.Next = prev
@@ -62,4 +62,19 @@ func (ll *LinkedList) Reverse() {
 		curr = next
 	}
 	ll.Head = prev
+}
+
+func (ll *LinkedList) Next() Node {
+	ll.Head = ll.Head.Next
+	return *ll.Head
+}
+
+func (ll *LinkedList) Lenght() (lenght int) {
+	current := ll.Head
+	for current.Next != nil {
+		lenght++
+		current = current.Next
+	}
+	lenght++
+	return
 }

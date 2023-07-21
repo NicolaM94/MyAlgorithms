@@ -12,10 +12,21 @@ func CreateTriangular(nth int) int {
 	return nth * (nth + 1) / 2
 }
 
-func FindDivisors(n int) (out []int) {
-	for i := 1; i <= n; i++ {
-		if n%i == 0 {
-			out = append(out, i)
+func FindDivisor(n int) (out []int) {
+	out = append(out, 1)
+	out = append(out, n)
+
+	for j := 2; j < n/2; j++ {
+		if j == out[len(out)-2] || j == out[len(out)-1] {
+			break
+		}
+		if j*j == n {
+			out = append(out, j)
+			continue
+		}
+		if n%j == 0 {
+			out = append(out, j)
+			out = append(out, n/j)
 		}
 	}
 	return
