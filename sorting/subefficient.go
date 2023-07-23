@@ -1,7 +1,7 @@
 package sorting
 
 import (
-	"fmt"
+	
 )
 
 // Selection sort algorithm
@@ -17,22 +17,31 @@ func SelectionSort (array []int) []int {
 			temp := array[i]
 			array[i] = array[minValue]
 			array[minValue] = temp
-		}
-		
-		fmt.Println(array)
-		
+		}		
 	}
 	return array
 }
 
 // Insertion sort algorithm
+// TODO: Fix insertion
 func InsertionSort (array []int) []int {
-	for i:=1;i<=len(array)-1;i++ {
-		for j := i-1;j==0;j-- {
-			if array[i] < array[j] {
-				temp := array[j]
-				array[j] = array[i]
-				array[i] = temp
+	return array
+}
+
+// Bubble sort algorithm
+//TODO: fix bubble
+func BubbleSort (array []int) []int {
+	for i := 0; i <= len(array)-2; i++ {
+		scambi := false
+		for j := 1 ; j<= len(array)-1-i;j++ {
+			if array[j-1] > array[j] {
+				temp := array[j-1]
+				array[j-1] = array[j]
+				array[j] = temp
+				scambi = true
+			}
+			if scambi {
+				break
 			}
 		}
 	}
