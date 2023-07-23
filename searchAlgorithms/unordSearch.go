@@ -1,4 +1,4 @@
-package unorderedsearch
+package searchalgorithms
 
 // Simple algorithm which searches itm in itms and returns true if present
 func UnorderedSearch(itm int, itms []int) bool {

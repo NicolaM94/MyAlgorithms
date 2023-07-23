@@ -1,4 +1,4 @@
-package orderedsearch
+package searchalgorithms
 
 // Binary search implementation which looks for elem in array
 // Returns true if it finds it
