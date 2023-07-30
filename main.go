@@ -10,19 +10,6 @@ func main() {
 
 	array := []int{8,5,2,3,1,9}
 
-	fmt.Println("Selection sort")
-	fmt.Println(orderingalgorithms.SelectionSort(array))
-
-	array = []int{8,5,2,3,1,9}
-
-	fmt.Println("Insertion sort")
-	fmt.Println(orderingalgorithms.InsertionSort(array))
-
-	array = []int{8,5,2,3,1,9}
-
-	fmt.Println("Bubble sort")
+	
 	fmt.Println(orderingalgorithms.BubbleSort(array))
-
-	fmt.Println("Array")
-	fmt.Println(array)
 }
