@@ -1,24 +1,35 @@
-# 📚 MyAlgorithms
-### Personal repository to keep track of algorithms encountered while studying and learning.
-#### Written in GO
-***
+# 📚 My Algorithms
+### Personal repository used as library containing all sorts of algorithms, data structures, math tools and solved problems.<br>
+### The library is fully written in Go (Golang).
 
-### Index of packages:
-* Arrray manipulations
-  * **DeleteLeft** : Shifts the array left deleting the first element
-  * **DeleteRight** : Shifts the array right deleting the last element
-  * ShiftRightToInsert : 
-  * ShiftLeftToInsert
-* fibonacci
-  * FibonacciaMath
-  * FibonacciRec
-  * FibonacciIter
-* Search algorithms
-  * Unordered search
-    * UnorderedSearch
-  * Ordered search
-    * **BinarySearchRecursive** : Recursive implementation of the classic binry search algorithm
-    * **BinarySearchIterative** : Iterative implementation of the classic binary search algorithm
- * primes
-   * **Sieve**: Performs Erathostene's Sieve to find all prime numbers before a given integer
-   
+---
+<br>
+
+## Index of contents
+1. ### **Array manipulation**: Tools used to manipulate arrays
+1. ### **Fibonacci**: Algorithms and tools about the Fibonacci sequence
+1. ### **LinkedList**: Algorithms and tools to create, modify and run a linked list
+1. ### **Matrices**: Algorithms and tools to manipulate matrices
+1. ### **Number Theory:** Algorithms about number theory
+1. ### **Primes:** Algorithms and math tools about prime numbers
+1. ### **Search algorithms:** Algorithms about searching elements in other data structures
+1. ### **Sommations:** Algorithms and tools about sums of arrays
+1. ### **Sorting:** Algorithms about sorting arrays
+<br>
+<br>
+
+# ⬇️ Content
+## 1. Array manipulations 
+Composed by: ***shifts.go, switching.go***
+### Algorithms:
+- **DeleteLeft**: Shifts an array left to delete the first item
+- **DeleteRight**: Shift an array right to delete the last item
+- **DeleteIndex:** Delete the element at index i from the array
+- **DeleteElem**: Deletes the first occurence of the element found in the array
+- **ShiftRightInsertLeft**: Shifts all the array values to one right and then inserts toInsert at array[0]
+- **ShiftLeftInsertRight**: Shifts all the array values to one left and the inserts toInsert at the end of the array
+- **SwitchIndexes**: Switches two elements at indices a and b of an array 
+- **SwitchElements**: Switches two elements a and b (first occurrencies from the left) of an array
+
+
+
