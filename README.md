@@ -16,9 +16,8 @@
 1. ### **Sommations:** Algorithms and tools about sums of arrays
 1. ### **Sorting:** Algorithms about sorting arrays
 <br>
-<br>
 
-# ⬇️ Content
+<span style="color:#6495ED;font-size:25px">⬇️ Content</span>
 ## 1. Array manipulations 
 Composed by: ***shifts.go, switching.go***
 ### Algorithms:
