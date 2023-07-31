@@ -1,11 +1,11 @@
-# 📚 My Algorithms
+<span style="color:#FA8072;font-size:32px">📚 My Algorithms</span>
 ### Personal repository used as library containing all sorts of algorithms, data structures, math tools and solved problems.<br>
 ### The library is fully written in Go (Golang).
 
 ---
 <br>
 
-## Index of contents
+<span style="color:#FFA07A;font-size:25px">Index of contents</span>
 1. ### **Array manipulation**: Tools used to manipulate arrays
 1. ### **Fibonacci**: Algorithms and tools about the Fibonacci sequence
 1. ### **LinkedList**: Algorithms and tools to create, modify and run a linked list
