@@ -1,6 +1,6 @@
 package trees
 
-import "fmt"
+
 
 type Node struct {
 	Value int
