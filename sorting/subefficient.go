@@ -1,3 +1,6 @@
+/*
+Package containing array ordering algorithms which sort arrays in a sub-efficient way
+*/
 package sorting
 
 // Selection sort algorithm
@@ -35,13 +38,15 @@ func InsertionSort(array []int) []int {
 }
 
 // Bubble sort algorithm
-func BubbleSort(array []int) []int {
-	for i := 0; i <= len(array)-1; i++ {
-		sorted := false
-		for j := 1; j <= len(array)-1-i; j++ {
+func BubbleSort (array []int) []int {
+	for i:=0;i<=len(array)-1;i++ {
+		scambi := false
+		for j:=1;j<=len(array)-2-i;j++ {
 			if array[j-1] > array[j] {
-				array[j-1], array[j] = array[j], array[j-1]
-				sorted = true
+				temp := array[j-1]
+				array[j-1] = array[j]
+				array[j] = temp
+				scambi = true
 			}
 		}
 		if !sorted {
