@@ -2,15 +2,15 @@ package main
 
 import (
 	"fmt"
-	"myalgo/powersandfactorials"
+	arraymanipulation "myalgo/arrayManipulation"
+
 )
 
 func main() {
 
-	a := 3
-	b := 6
-	fmt.Println(powersandfactorials.RepeatedPower(a,b))
+	a := []int{1,4,5,6,9,10}
+	b := []int{2,3,4,5,9,13,0}
 
-	fmt.Println(powersandfactorials.Factorial(b))
+	fmt.Println(arraymanipulation.Intersection(a,b))
 
 }
