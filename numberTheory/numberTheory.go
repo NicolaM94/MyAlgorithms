@@ -1,6 +1,8 @@
 package numbertheory
 
-import "math"
+import (
+	"math"
+)
 
 // Checks if a number is a triangular number
 func CheckTriangular(n int) bool {
@@ -34,3 +36,4 @@ func FindDivisor(n int) (out []int) {
 	}
 	return
 }
+

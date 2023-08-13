@@ -2,14 +2,15 @@ package main
 
 import (
 	"fmt"
-	orderingalgorithms "myalgo/sorting"
-	
+	"myalgo/powersandfactorials"
 )
 
 func main() {
 
-	array := []int{8,5,2,3,1,9}
+	a := 3
+	b := 6
+	fmt.Println(powersandfactorials.RepeatedPower(a,b))
 
-	
-	fmt.Println(orderingalgorithms.BubbleSort(array))
+	fmt.Println(powersandfactorials.Factorial(b))
+
 }
