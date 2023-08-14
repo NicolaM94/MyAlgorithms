@@ -27,3 +27,13 @@ func SwitchElements (a,b int, array []int) []int {
 	array[bInd] = temp
 	return array
 }
+
+// Reverse an array in place
+func Reverse (a []int) []int {
+	for n:=0;n<=len(a)/2;n++ {
+		temp := a[n]
+		a[n] = a[len(a)-n-1]
+		a[len(a)-n-1] = temp
+	}
+	return a
+}
