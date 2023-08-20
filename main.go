@@ -2,12 +2,10 @@ package main
 
 import (
 	"fmt"
-	arraymanipulation "myalgo/arrayManipulation"
+	"myalgo/equations"
 )
 
 func main() {
-
-	a := []int{1,4,5,6,9,10}
-	fmt.Println(arraymanipulation.Reverse(a))
-
+	a := "-3x+9x-5-2+x"
+	fmt.Println(equations.LinearSolver(a))
 }
