@@ -2,13 +2,10 @@ package main
 
 import (
 	"fmt"
-	setstheory "myalgo/setsTheory"
+	"myalgo/equations"
 )
 
 func main() {
-	A := []int{2, 5, 3, 0, 7, 1, 8}
-	B := []int{6, 4, 0, 3, 9, 6, 5}
-
-	fmt.Println(setstheory.Difference(A, B))
-
+	a := "-3x+9x-5-2+x"
+	fmt.Println(equations.LinearSolver(a))
 }
