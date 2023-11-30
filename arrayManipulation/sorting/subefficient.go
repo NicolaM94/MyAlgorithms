@@ -4,7 +4,7 @@ Package containing array ordering algorithms which sort arrays in a sub-efficien
 package sorting
 
 // Selection sort algorithm
-func SelectionSort(array []int) []int {
+func SelectionSort(array []string) []string {
 	for i := 0; i <= len(array)-2; i++ {
 		minValue := i + 1
 		for j := i + 2; j < len(array); j++ {
@@ -38,10 +38,10 @@ func InsertionSort(array []int) []int {
 }
 
 // Bubble sort algorithm
-func BubbleSort (array []int) []int {
-	for i:=0;i<=len(array)-1;i++ {
+func BubbleSort(array []int) []int {
+	for i := 0; i <= len(array)-1; i++ {
 		sorted := false
-		for j:=1;j<=len(array)-2-i;j++ {
+		for j := 1; j <= len(array)-2-i; j++ {
 			if array[j-1] > array[j] {
 				temp := array[j-1]
 				array[j-1] = array[j]

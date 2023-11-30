@@ -2,16 +2,13 @@ package main
 
 import (
 	"fmt"
-	"myalgo/equations"
-	"myalgo/ports"
+	setstheory "myalgo/setsTheory"
 )
 
 func main() {
-	a := "-3x+9x-5+2+x"
-	fmt.Println(equations.LinearSolver(a))
+	A := []int{2, 5, 3, 0, 7, 1, 8}
+	B := []int{6, 4, 0, 3, 9, 6, 5}
 
-	as := 13
-	bs := 4
-	print(ports.Xor(as, bs))
+	fmt.Println(setstheory.Difference(A, B))
 
 }
