@@ -1,5 +1,7 @@
 package sets
 
+
+
 // Private function to check if element x is contained by A
 func contains (x int, A []int) bool {
 	for a := range A {
@@ -102,4 +104,34 @@ func CartesianProduct (A, B []int) (out [][]int) {
 		}
 	}
 	return
+}
+
+// Returns true when B is a cover of A, meaning that each set of B contains at least one element of A;
+// This function is resource intensive, do not use it with high volumes sets.
+func IsACover(A []int, B [][]int) bool {
+	for a := range A {
+		tempContains := false
+		for b := range B {
+			tempContains = contains(A[a], B[b])
+			if tempContains {
+				break
+			}
+		}
+		if tempContains {
+			continue
+		}
+		return false
+	}
+	return true
+}
+
+func IsAPartition (A []int, B [][]int) bool {
+	for i := 0; i < len(B)-1; i++ {
+		for j := i+1; j < len(B); j++ {
+			if len(Intersection(B[i],B[j])) != 0 {
+				return false
+			}
+		}
+	}
+	return IsACover(A,B)
 }
