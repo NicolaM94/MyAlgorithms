@@ -93,3 +93,13 @@ func SimmetricDifference (A, B []int) []int {
 	intersection := Intersection(A,B)
 	return Difference(union,intersection)
 }
+
+// Returns the cartesian product of AxB
+func CartesianProduct (A, B []int) (out [][]int) {
+	for a := range A {
+		for b := range B {
+			out = append(out, []int{A[a],B[b]})
+		}
+	}
+	return
+}

@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	A := []int{1,2,3,7,8,9}
-	B := []int{7,8,9}
-	fmt.Println(sets.Difference(A,B))
+	A := []int{1,2,3}
+	B := []int{1,2,3}
+	fmt.Println(sets.CartesianProduct(A,B))
 }
