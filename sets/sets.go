@@ -3,6 +3,7 @@ package sets
 
 
 // Private function to check if element x is contained by A
+// This function is only used in this modules
 func contains (x int, A []int) bool {
 	for a := range A {
 		if A[a] == x {
@@ -125,6 +126,8 @@ func IsACover(A []int, B [][]int) bool {
 	return true
 }
 
+// Returns true when B is a partition of A, meaning that each set of B contains at least one element of A;
+// This function is resource intensive, do not use it with hight volumes sets.
 func IsAPartition (A []int, B [][]int) bool {
 	for i := 0; i < len(B)-1; i++ {
 		for j := i+1; j < len(B); j++ {
