@@ -85,7 +85,6 @@ func Difference (A, B []int) (out []int) {
 		}
 	}
 	return out
-<<<<<<< HEAD
 }
 
 // Returns the simmetric difference between A and B
@@ -93,6 +92,4 @@ func SimmetricDifference (A, B []int) []int {
 	union := Union(A,B)
 	intersection := Intersection(A,B)
 	return Difference(union,intersection)
-=======
->>>>>>> b160f0e (adding sets theory)
 }
