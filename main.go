@@ -1,12 +1,17 @@
 package main
 
 import (
-	
-	"myalgo/sets"
+	"fmt"
+	complexnumbers "myalgo/complexNumbers"
 )
 
 func main() {
-	A := []int{1,5}
-	B := [][]int{{1,4},{2,5},{3,9}}
-	sets.IsTopology(A,B)
+	a := complexnumbers.ComplexN{RealPart: 1, ImagPart: 1}
+	b := complexnumbers.ComplexN{RealPart: 2, ImagPart: 2}
+	a.PrintAlgebraic()
+	fmt.Println()
+	a.PrintTrigonometric()
+	fmt.Println()
+	b.PrintTrigonometric()
+	
 }
