@@ -39,19 +39,18 @@ func InsertionSort(array []int) []int {
 
 // Bubble sort algorithm
 func BubbleSort(array []int) []int {
-	for i := 0; i <= len(array)-1; i++ {
-		sorted := false
-		for j := 1; j <= len(array)-2-i; j++ {
-			if array[j-1] > array[j] {
-				temp := array[j-1]
-				array[j-1] = array[j]
-				array[j] = temp
-				sorted = true
+	wall := len(array)
+	for wall > 0 {
+		for f := 0; f <= wall-2; f++ {
+			for g := f + 1; g <= wall-1; g++ {
+				if array[f] > array[g] {
+					temp := array[g]
+					array[g] = array[f]
+					array[f] = temp
+				}
 			}
 		}
-		if !sorted {
-			break
-		}
+		wall--
 	}
 	return array
 }
