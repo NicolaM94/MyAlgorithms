@@ -38,7 +38,7 @@ func InsertionSort(array []int) []int {
 }
 
 // Bubble sort algorithm
-func BubbleSort(array []int) []int {
+func BubbleSort(array []byte) []byte {
 	wall := len(array)
 	for wall > 0 {
 		for f := 0; f <= wall-2; f++ {

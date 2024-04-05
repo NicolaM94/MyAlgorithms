@@ -2,11 +2,13 @@ package main
 
 import (
 	"fmt"
-	"myalgo/arrayManipulation/sorting"
+	"myalgo/permutations"
 )
 
 func main() {
-	a := []int{7, 1, 9, 3, 5, 2}
-	a = sorting.BubbleSort(a)
-	fmt.Println(a)
+
+	for i := 1; i <= 20; i++ {
+		fmt.Println(permutations.NthPermutation(i, []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}))
+	}
+
 }
