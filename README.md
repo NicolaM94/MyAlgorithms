@@ -17,18 +17,7 @@
 1. **Sorting:** Algorithms about sorting arrays
 <br>
 
-<span style="color:#6495ED;font-size:25px">⬇️ Content</span>
-## 1. Array manipulations 
-Composed by: ***shifts.go, switching.go***
-### Algorithms:
-- **DeleteLeft**: Shifts an array left to delete the first item
-- **DeleteRight**: Shift an array right to delete the last item
-- **DeleteIndex:** Delete the element at index i from the array
-- **DeleteElem**: Deletes the first occurence of the element found in the array
-- **ShiftRightInsertLeft**: Shifts all the array values to one right and then inserts toInsert at array[0]
-- **ShiftLeftInsertRight**: Shifts all the array values to one left and the inserts toInsert at the end of the array
-- **SwitchIndexes**: Switches two elements at indices a and b of an array 
-- **SwitchElements**: Switches two elements a and b (first occurrencies from the left) of an array
-
+Each package is fully documented. To see the docs:
+`go doc -all <package>/<module>`
 
 
