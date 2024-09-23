@@ -27,3 +27,35 @@ func Sieve(limit int) []int {
 	}
 	return outarray
 }
+
+// My Sieve of Erathostenes algorithm
+func MySieve (upToN int) []int {
+	// Creates a pool of all the integers from 0 to upToN
+	var pool = []int{}
+	for x:=0;x<=upToN;x++ {
+		pool = append(pool, x)
+	}
+
+	// Ranging from 2 to the the last integer, if the value is not already 0
+	// sets all the multiples of that value to 0, up to the biggest multiple below the last integer.
+	for _,p := range pool[2:] {
+		if p != 0 {
+			var divisor = 2
+			for p*divisor <= upToN {
+				pool[p*divisor] = 0
+				divisor++
+			}
+		}
+	}
+
+	// Collects all the values from pool which arer still different from 0
+	var collector = []int{}
+	for p := range pool {
+		if pool[p] != 0{
+			collector = append(collector, pool[p])
+		}
+	}
+	// Returns these values from index 1 to the end: index 0 is always 1.
+	return collector[1:]
+}
+

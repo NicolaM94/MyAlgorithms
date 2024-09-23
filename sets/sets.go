@@ -1,140 +1,155 @@
 package sets
 
+// Module containing all the functions referred to set theory.
+// Since the modules takes a functional aproach, a list of int is to be considered as a set, meaning that all the functions refers to lists of integers as sets.
+// Notice that sets are considered to contain unique elements (no repetitions)
 
-
-// Private function to check if element x is contained by A
-// This function is only used in this modules
-func contains (x int, A []int) bool {
-	for a := range A {
-		if A[a] == x {
+// Checks if set contains element
+// Not exported, used only as module internal
+func contains(element int, set []int) bool {
+	for s := range set {
+		if element == set[s] {
 			return true
 		}
 	}
 	return false
 }
+
+// Returns true if A is empty
+func IsEmpty (A []int) bool {
+	return len(A) == 0
+}
+
 // Returns true if B is a subset of A
-func IsIncluded (A, B []int) bool {
-	if len(B) == 0 {
-		return true
-	}
-	for i := range B {
-		if !contains(B[i], A) {
+func IsSubset (B,A []int) bool {
+	for b := range B {
+		if !contains(B[b],A) {
 			return false
 		}
 	}
 	return true
 }
 
-// Returns true if B is a proper subset of A
-func IsProperlyIncluded (A, B []int) bool {
-	if len(B) == 0 {
-		return false
-	}
-	collector := []int{}
-	for b := range B {
-		if !contains(B[b], A) {
-			return false
-		}
-		collector = append(collector, B[b])
-	}
-	if len(collector) < len(A) {
+// Returns true if B is a proper subset of A, meaning that A contains other elements besides B's.
+func IsProperSubset (B,A []int) bool {
+	if len(B) != len(A) && IsSubset(B,A) {
 		return true
 	}
 	return false
 }
 
-// Returns the set of the parts of A
-func SetOfTheParts (A []int) (out [][]int) {
-	if len(A) == 0 {
-		return
-	}
-	out = append(out, []int{})
-	out = append(out, A)
-	for i := 0; i < len(A)-1; i++ {
-		for j := i+1; j < len(A); j++ {
-			out = append(out, []int{A[i],A[j]})
-		}
-	}
+//TODO: Da fare qui, l'insieme delle parti è complesso perchè vanno scritte le combinazioni di n -k elementi, per k da 1 a n-1.
+func PartsSetOf(A []int) (p [][]int) {
 	return
 }
 
 // Returns the intersection set between A and B
-func Intersection (A, B []int) (out []int) {
+// Notice that the function only checks if values of A are present in B, thanks the the commutative property of intersection.
+func Intersection (A,B []int) (intersection []int) {
 	for a := range A {
 		if contains(A[a], B) {
-			out = append(out, A[a])
+			intersection = append(intersection, A[a])
 		}
 	}
-	return
+	return intersection
 }
 
-// Returns true if A and B are disjointed
-func AreDisjointed (A, B []int) bool {
-	return len(Intersection(A,B)) == 0
-}
-
-// Returns the union between A and B
-func Union (A, B []int) (out []int) {
-	out = append(out, A...)
-	out = append(out, B...)
-	return
-}
-
-// Returns the set of the elements contained by A but not by B
-func Difference (A, B []int) (out []int) {
-	for a := range A {
-		if !contains(A[a],B) {
-			out = append(out, A[a])
+// Returns true if C is a valid intersection of A and B, meaning that C elements are contained in A AND B.
+func IsIntersection (C, A, B []int) bool {
+	for c := range C {
+		if !contains(C[c], A) || !contains(C[c],B) {
+			return false
 		}
-	}
-	return out
-}
-
-// Returns the simmetric difference between A and B
-func SimmetricDifference (A, B []int) []int {
-	union := Union(A,B)
-	intersection := Intersection(A,B)
-	return Difference(union,intersection)
-}
-
-// Returns the cartesian product of AxB
-func CartesianProduct (A, B []int) (out [][]int) {
-	for a := range A {
-		for b := range B {
-			out = append(out, []int{A[a],B[b]})
-		}
-	}
-	return
-}
-
-// Returns true when B is a cover of A, meaning that each set of B contains at least one element of A;
-// This function is resource intensive, do not use it with high volumes sets.
-func IsACover(A []int, B [][]int) bool {
-	for a := range A {
-		tempContains := false
-		for b := range B {
-			tempContains = contains(A[a], B[b])
-			if tempContains {
-				break
-			}
-		}
-		if tempContains {
-			continue
-		}
-		return false
 	}
 	return true
 }
 
-// Returns true when B is a partition of A, meaning that each set of B contains at least one element of A;
-// This function is resource intensive, do not use it with hight volumes sets.
-func IsAPartition (A []int, B [][]int) bool {
-	for i := 0; i < len(B)-1; i++ {
-		for j := i+1; j < len(B); j++ {
-			if len(Intersection(B[i],B[j])) != 0 {
-				return false
-			}
+// Returns true if A and B are disjoned, meaning they have no elements in common.
+func AreDisjoined(A,B []int) bool {
+	return len(Intersection(A,B)) == 0
+}
+
+
+// Returns the union set between A and B.
+// Notice that the function only checks if values of B are present in A, since the union is commutative
+func Union (A,B []int) (union []int) {
+	union = A
+	for b := range B {
+		if !contains(B[b], A) {
+			union = append(union, B[b])
 		}
 	}
-	return IsACover(A,B)
+	return
+}
+
+// Returns true if C is a valid union of A and B, meaning that C elements are contained in A OR B.
+func IsUnion (C, A, B []int) bool {
+	if len(C) < len(A)+len(B) {
+		return false
+	}
+	for c := range C {
+		if !contains(C[c], A) && !contains(C[c],B) {
+			return false
+		}
+	}
+	return true
+}
+
+// Difference
+
+// Returns the difference between A and B, as A\B.
+// Notice that the difference does not commute, meaning that A\B != B\A
+func Difference(A, B []int) (difference []int) {
+	for a := range A {
+		if !contains(A[a], B) {
+			difference = append(difference, A[a])
+		}
+	}
+	return
+}
+
+// Return the complementary set of B in regards of A. This is possible only if B is a proper subset of A and the
+// complementary set will be the difference A\B
+func ComplementarySet(B,A []int) []int {
+	if IsProperSubset(B,A) {
+		return Difference(A,B)
+	}
+	return []int{}
+}
+
+// Return the symmetric difference between A and B, aka the difference between the union and the intersection of A and B.
+// The result is the array of the elements of A not in B and the elements of B not in A
+func SymmetricDifference (A,B []int) []int {
+	return Difference(Union(A,B),Intersection(A,B))
+}
+
+
+// Returns A x B.
+// The product does not commute (AxB != BxA)
+func Product(A,B []int) (product [][]int) {
+	for a := range A {
+		for b:= range B {
+			product = append(product, []int{A[a],B[b]})
+		}
+	}
+	return
+}
+
+// Returns the square of A, meaning AxA.
+// An example is R^2
+func Square(A []int) (square [][]int) {
+	for a := range A {
+		for b := range A {
+			square = append(square, []int{A[a],A[b]})
+		}
+	}
+	return square
+}
+
+// Returns the diagonal of A^2
+func DiagonalSquareOf(A []int) (diagonal [][]int) {
+	for a := range A {
+		diagonal = append(diagonal, []int{A[a],A[a]})
+	}
+	return
 }

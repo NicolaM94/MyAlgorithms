@@ -25,7 +25,7 @@ func (e Equation) PPrint() {
 	fmt.Println(out[:len(out)-3])
 }
 
-// Finds alla the divisors of the last term of e and stores them in e.Divisors.
+// Finds all the divisors of the last term of e and stores them in e.Divisors.
 // The method calculates both positive and negative values directly, since it's common that solutions are negative if non-positive and vice-versa
 func (e *Equation) FindDivisors() {
 	dividend := e.Terms[len(e.Terms)-1]
@@ -42,7 +42,7 @@ func (e *Equation) FindDivisors() {
 
 // Applies Ruffini's rule and returns an array with the downgraded equation and the divisor applied with its sign inversed
 func (e *Equation) RuffinisRule() ([]int, int) {
-
+	e.FindDivisors()
 	for _, d := range e.Divisors {
 		tS := []int{e.Terms[0]}
 		for _, t := range e.Terms[1:] {

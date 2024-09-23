@@ -3,21 +3,23 @@ package searchalgorithms
 // Binary search implementation which looks for elem in array
 // Returns true if it finds it
 // Iterative implementation
-func BinarySearchIter(array []int, elem int) bool {
-	a := 1
-	b := len(array)
-	for array[int((a+b)/2)] != elem {
-		m := int((a + b) / 2)
-		if array[m] > elem {
-			b = m - 1
-		} else {
-			a = m + 1
+// Binary search
+func BinarySearchIterative(array []int, target int) bool {
+	var i int = 0
+	var j int = len(array)-1
+	for j>i {	
+		var m int = (i+j)/2
+		if array[m] < target {
+			i = m+1
+			continue
 		}
-		if a > b {
-			return false
+		if array[m] > target {
+			j = m-1
+			continue
 		}
+		return true
 	}
-	return true
+	return false
 }
 
 // Binary search implementation which looks for elem in array

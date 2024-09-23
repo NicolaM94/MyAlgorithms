@@ -5,67 +5,68 @@ import (
 	"math"
 )
 
-// WIP library to work with complex numbers, works ONLY with n being natural (N)
-
-// Base structure type for the complex number
-// Accepts only the real and imaginary part and + or - sign
-type ComplexN struct {
-	RealPart float32	
-	ImagPart float32
+type Cmpx struct {
+	Real float64
+	Imag float64
 }
 
-// Calculate the modulo of the complex number
-func (c ComplexN) Modulo () (int) {
-	return int(c.RealPart*c.RealPart + c.ImagPart * c.ImagPart)
-}
-
-// Calculates the conjuigate of the complex number
-func (c ComplexN) Conjugate () ComplexN {
-	return ComplexN{c.RealPart, c.ImagPart * -1}
-}
-
-// Add to c another complex number n not in place, returning a new value.
-// Used also for subtraction.
-func (c ComplexN) Add (n ComplexN) ComplexN {
-	return ComplexN{
-		RealPart: c.RealPart + n.RealPart,
-		ImagPart: c.ImagPart + n.ImagPart,
+// Pretty prints the complex number cn in its algebraic form.
+func (cn *Cmpx) PrettyAlgebraic() {
+	if cn.Imag == 0 && cn.Real == 0 {
+		fmt.Println(0)
+		return
 	}
-}
-
-// Multiplication
-func (c ComplexN) Product (n ComplexN)  ComplexN {
-	return ComplexN{
-		RealPart: (c.RealPart*n.RealPart)-(c.ImagPart*n.ImagPart),
-		ImagPart: (c.RealPart*n.ImagPart)+(c.ImagPart*n.RealPart),
+	var out string
+	// Parse real part
+	if (cn.Real > 0) {
+		out += "+"
+		out += fmt.Sprint(cn.Real)
+	} else if (cn.Real < 0) {
+		out += fmt.Sprint(cn.Real)
 	}
-}
-
-
-func (c ComplexN) Division (n ComplexN) ComplexN {
-	return ComplexN{
-		RealPart: c.Product(n.Conjugate()).RealPart / float32(n.Modulo()),
-		ImagPart: c.Product(n.Conjugate()).ImagPart / float32(n.Modulo()),
+	// Parse the imaginary part
+	if (cn.Imag > 0) {
+		out += "+"
+		out += fmt.Sprint(cn.Imag)
+		out += "i"
+	} else {
+		out += fmt.Sprint(cn.Imag)
+		out += "i"
 	}
+	fmt.Println(out)
 }
 
+// Calculates the module of the complex number.
+func (cn *Cmpx) Module() float64 {
+	var base = cn.Real * cn.Real + cn.Imag * cn.Imag
+	return math.Sqrt(base)
+}
 
-// Print the number c in its algebraic form
-// Makes use of fmt.Sprint function to convert integers to string
-func (c ComplexN) PrintAlgebraic () {
-	out := fmt.Sprint(c.RealPart)
-	if c.ImagPart >= 0 {
-		out = out + "+"
+// Calculates the anomaly (angle) of the complex number.
+func (cn *Cmpx) Anomaly() float64 {
+	if (cn.Real == 0) {
+		if (cn.Imag > 0) {
+			return math.Pi/2
+		} else if (cn.Imag < 0) {
+			return math.Pi * 3/2
+		}
 	}
-	out = out + fmt.Sprint(c.ImagPart)
-	out = out + "i"
-	print(out)
+	return math.Atan2(cn.Imag,cn.Real)
 }
 
-func (c ComplexN) PrintTrigonometric () {
+// Returns the conjugate of the complex number: if z = a + bi it returns a - bi.
+func (cn *Cmpx) Conjugate() Cmpx {
+	return Cmpx{cn.Real, cn.Imag * -1}
+}
 
-	angle := math.Atan(math.Tan(float64(c.ImagPart)/float64(c.RealPart)))
-
-	print(fmt.Sprintf("%v(cos %vπ + isin %vπ)",c.Modulo(), angle,angle))
-
+// Pretty prints the complex number cn in its trig form.
+func (cn *Cmpx) PrettyTrigonometric () {
+	var out string
+	out += fmt.Sprint(cn.Module())
+	out += "(cos "
+	out += fmt.Sprint(cn.Anomaly())
+	out += " + sin "
+	out += fmt.Sprint(cn.Anomaly())
+	out += ")"
+	fmt.Println(out)
 }

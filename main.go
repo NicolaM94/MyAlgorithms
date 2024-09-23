@@ -2,13 +2,18 @@ package main
 
 import (
 	"fmt"
-	"myalgo/permutations"
+	"myalgo/ruffini"
 )
 
 func main() {
 
-	for i := 1; i <= 20; i++ {
-		fmt.Println(permutations.NthPermutation(i, []int{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}))
+	var grades = []int{2,1,3,4}
+	var equation = ruffini.Equation{Terms: grades}
+	equation.PPrint()
+	var out, div = equation.RuffinisRule()
+	for out != nil {
+		fmt.Println(out, div)
+		equation.Terms = out
+		out, div = equation.RuffinisRule()
 	}
-
 }
