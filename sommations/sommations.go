@@ -17,7 +17,7 @@ func IntArraySum(array []int) (sum int) {
 
 // Used to perform the sum of the numbers in filePath up to firstNdigits precision.
 // The numbers to sum must be held by a file, one number for each row
-// It needs the function ShiftRightToInsert, which you can find it here
+// It needs the function [ShiftRightToInsert], which you can find it here
 func CalculateHugeSums(filePath string, firstNdigits int) []int {
 	// Grabbing numbers from text file and storing them in matrix
 	file, err := os.ReadFile(filePath)

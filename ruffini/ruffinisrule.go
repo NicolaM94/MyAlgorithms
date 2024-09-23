@@ -1,8 +1,10 @@
+//Module containing all the function needed to perform the Ruffini method to downgrade a polinomial expression by finding its lowest divisor and diving the
+//polynomial by that value.
 package ruffini
 
 import "fmt"
 
-// Base structure to parse equation terms
+//Base structure to parse equation terms
 type Equation struct {
 	Terms    []int
 	Divisors []int
