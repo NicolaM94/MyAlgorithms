@@ -20,6 +20,7 @@ The library is fully written in Go (Golang).
 <br>
 Each package is fully documented. To read the docs:
 <br>
+
 `go doc -all [package]/[module]`
 
 
