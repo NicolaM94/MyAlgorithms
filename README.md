@@ -1,6 +1,6 @@
 <span style="color:#FA8072;font-size:32px">📚 My Algorithms</span>
-### Personal repository used as library containing all sorts of algorithms, data structures, math tools and solved problems.<br>
-### The library is fully written in Go (Golang).
+#### Personal repository used as library containing all sorts of algorithms, data structures, math tools and solved problems.<br>
+#### The library is fully written in Go (Golang).
 
 ---
 <br>
