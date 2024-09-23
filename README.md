@@ -17,8 +17,10 @@ The library is fully written in Go (Golang).
 1. **Sorting:** Algorithms about sorting arrays
 <br>
 ---
+<br>
 Each package is fully documented. To read the docs:
 <br>
-```go doc -all <package>/<module>```
+`go doc -all [package]/[module]`
+
 
 
