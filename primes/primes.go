@@ -1,8 +1,28 @@
 package primes
 
 import (
+	"fmt"
 	"math"
 )
+
+// Validates a number as prime by checking all its odd divisors
+func IsPrime (number int) bool {
+	if number == 0 || number == 1 {
+		return false
+	}
+	if number == 2 {
+		return true
+	}
+	if number%2==0 {
+		return false
+	}
+	for n:=3;n<(number/2)+1;n+=2 {
+		if number%n == 0 {
+			return false
+		}
+	}
+	return true
+}
 
 // Returns an array of primes lower than limit by implementing
 // the sieve of Erathostenes
@@ -59,3 +79,41 @@ func MySieve (upToN int) []int {
 	return collector[1:]
 }
 
+// Checks if a prime is truncable from the right, meaning removing one digit by one starting from the right.
+// This simpy divides by ten and takes the integer part of the result, verifying it is prime.
+// If it's not it returns false
+func isRightTruncatable (n int) bool {
+	for n > 10 {
+		if !IsPrime(n) {
+			return false
+		}
+		n = int(n/10)
+	}
+	return IsPrime(n)
+}
+
+
+// Checks if a prime is truncatable from the left, meaning removing one digit by one starting from the left.
+// Uses fmt lib to calculate the length of the number.
+// This calculates the highest power of 10 smaller than the number and then divides the number by it, taking the integer part left.
+// The integer part is then multiplied by the power of 10 and subtracted from the original number.
+// The process stops when the power reaches 0.
+func isLeftTruncatable (n int) bool {
+	var size = len(fmt.Sprint(n))-1
+	for size > 0 {
+		var power = math.Pow10(size)
+		var remover = int(power) * int(n/int(power))
+		var result = n - remover
+		if !IsPrime(result) {
+			return false
+		}
+		n = result
+		size --
+	}
+	return true
+}
+
+// Does isRightTruncatable && isLeftTruncatable
+func IsTruncatable (n int) bool {
+	return isLeftTruncatable(n) && isRightTruncatable(n)
+}
