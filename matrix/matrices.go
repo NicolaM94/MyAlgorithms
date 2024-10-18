@@ -32,12 +32,12 @@ func (mx *matrix) Print() {
 }
 
 // Returns the size of the matrix by rows and columns
-func (mx *matrix) Size () (int,int) {
+func (mx *matrix) Size() (int,int) {
 	return len(mx.rows),len(mx.cols)
 }
 
 // Appends the new row at the bottom of the matrix
-func (mx *matrix) AddRow (newRow []float32) error {
+func (mx *matrix) AddRow(newRow []float32) error {
 
 	// If at least one row is present, must check for the correct lenght of the new row
 	if mx.rows != nil && len(mx.rows[0]) != len(newRow) {
@@ -62,20 +62,20 @@ func (mx *matrix) AddRow (newRow []float32) error {
 }
 
 // Swaps two rows ins place
-func (mx *matrix) SwapRows (i int,j int) {
+func (mx *matrix) SwapRows(i int,j int) {
 	var temp = mx.rows[i]
 	mx.rows[i] = mx.rows[j]
 	mx.rows[j] = temp
 }
 
 // Inserts the newRow at index i
-func (mx *matrix) InsertNewRow (index int, newRow []float32) {
+func (mx *matrix) InsertNewRow(index int, newRow []float32) {
 	mx.AddRow(newRow)
 	mx.SwapRows(index,len(mx.rows)-1)
 }
 
 // Removes the i-th row from the matrix, in place
-func (mx *matrix) RemoveRow (i int) {
+func (mx *matrix) RemoveRow(i int) {
 	// Updates the rows
 	if i == 0 {
 		mx.rows = mx.rows[1:]
@@ -94,7 +94,7 @@ func (mx *matrix) RemoveRow (i int) {
 }
 
 // Removes the j-th column from the matrix, in place
-func (mx *matrix) RemoveColumn (j int) {
+func (mx *matrix) RemoveColumn(j int) {
 	// Update the columns
 	for c := j+1; c < len(mx.cols); c++ {
 		mx.cols[c-1] = mx.cols[c]
@@ -107,10 +107,24 @@ func (mx *matrix) RemoveColumn (j int) {
 }
 
 // Returns the submatrix starting from the element a(i,j) to the element a(s,t)
-func (mx *matrix) Submatrix (i,j,s,t int) matrix {
+func (mx *matrix) Submatrix(i,j,s,t int) matrix {
 	var newMatrix matrix
 	for row := i; row <= s; row++ {
 		newMatrix.AddRow(mx.rows[row][j:t+1])
 	}
 	return newMatrix
 }
+
+// Returns the diagonal of the matrix.
+// Raise an error if the matrix is not a square one.
+func (mx *matrix) Diagonal() ([]float32, error) {
+	if len(mx.rows) != len(mx.rows[0]) {
+		return nil, fmt.Errorf("cannot select the diagonal of a non square matrix")
+	}
+	var out []float32
+	for m := range mx.rows {
+		out = append(out, mx.rows[m][m])
+	}
+	return out, nil
+}
+
