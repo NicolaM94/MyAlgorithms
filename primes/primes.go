@@ -24,32 +24,10 @@ func IsPrime (number int) bool {
 	return true
 }
 
-// Returns an array of primes lower than limit by implementing
-// the sieve of Erathostenes
-func Sieve(limit int) []int {
-	controlArray := make([]bool, limit)
-	cappedLimit := int(math.Sqrt(float64(limit)))
-	for n := 0; n < limit; n = n + 2 {
-		controlArray[n] = true
-	}
-	for n := 3; n < cappedLimit; n = n + 2 {
-		if !controlArray[n] {
-			for m := n * n; m < limit; m = m + 2*n {
-				controlArray[m] = true
-			}
-		}
-	}
-	outarray := []int{}
-	for v := range controlArray {
-		if !controlArray[v] {
-			outarray = append(outarray, v)
-		}
-	}
-	return outarray
-}
+
 
 // My Sieve of Erathostenes algorithm
-func MySieve (upToN int) []int {
+func Sieve (upToN int) []int {
 	// Creates a pool of all the integers from 0 to upToN
 	var pool = []int{}
 	for x:=0;x<=upToN;x++ {
