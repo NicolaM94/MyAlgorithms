@@ -12,23 +12,14 @@ func main() {
 	var row4 = []float32{0,0,0,0}
 	
 	var mx = matrix.CreateMatrix()
-	err := mx.AddRow(row1)
-	if err != nil {
-		panic(err)
-	}
-	err = mx.AddRow(row2)
-	if err != nil {
-		panic(err)
-	}
+	mx.AddRow(row1)
+	mx.AddRow(row2)
 	mx.AddRow(row3)
 	mx.AddRow(row4)
-	fmt.Println("Initial matrix")
-	mx.Print()
 
-	mx.RemoveColumn(2)
-	
-	fmt.Println("After operation")
 	mx.Print()
-	fmt.Println("Columns")
-	fmt.Println(mx.Columns())
+	fmt.Println()
+	var sub = mx.Submatrix(2,0,3,3)
+	sub.Print()
+
 }

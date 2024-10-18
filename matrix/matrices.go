@@ -105,3 +105,12 @@ func (mx *matrix) RemoveColumn (j int) {
 		mx.rows[m] = utils.ArrayRemove(mx.rows[m],j)
 	}
 }
+
+// Returns the submatrix starting from the element a(i,j) to the element a(s,t)
+func (mx *matrix) Submatrix (i,j,s,t int) matrix {
+	var newMatrix matrix
+	for row := i; row <= s; row++ {
+		newMatrix.AddRow(mx.rows[row][j:t+1])
+	}
+	return newMatrix
+}
