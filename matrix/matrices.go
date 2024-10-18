@@ -105,7 +105,3 @@ func (mx *matrix) RemoveColumn (j int) {
 		mx.rows[m] = utils.ArrayRemove(mx.rows[m],j)
 	}
 }
-
-func (mx *matrix) GaussianElimination() {
-	
-}
