@@ -128,3 +128,12 @@ func (mx *matrix) Diagonal() ([]float32, error) {
 	return out, nil
 }
 
+//TODO: Here
+func (mx *matrix) updatecolumns () {
+
+}
+
+//TODO: Here
+func (mx *matrix) ReplaceSubMatrix(i,j int, newmatrix matrix) (matrix, error) {
+	
+}
