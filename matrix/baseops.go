@@ -1,7 +1,7 @@
-/*Package used to perform operations with the matrices.
-One should create a matrix object first and then add the rows.
-Columns are not defined as a base property of the object, they are calculated as a method instead.
-This is to prevent the need of updating the columns each time one modifies the rows.*/
+//Package used to perform operations with the matrices.
+//One should create a matrix object first and then add the rows.
+//Columns are not defined as a base property of the object, they are calculated as a method instead.
+//This is to prevent the need of updating the columns each time one modifies the rows.
 package matrix
 
 import (
@@ -10,7 +10,7 @@ import (
 	"myalgo/utils"
 )
 
-//Base matrix type
+// Base matrix type
 type matrix struct {
 	rows [][]float32
 }
@@ -94,17 +94,8 @@ func (mx *matrix) RemoveColumn(j int) {
 	}
 }
 
-// Returns the submatrix starting from the element a(i,j) to the element a(s,t)
-func (mx *matrix) Submatrix(i,j,s,t int) matrix {
-	var newMatrix matrix
-	for row := i; row <= s; row++ {
-		newMatrix.AddRow(mx.rows[row][j:t+1])
-	}
-	return newMatrix
-}
-
 // Returns the diagonal of the matrix.
-// Raise an error if the matrix is not a square one.
+// Raise an error if the matrix is not a square one, since it's impossibile to calculate the diagonal of a non-square matrix.
 func (mx *matrix) Diagonal() ([]float32, error) {
 	if len(mx.rows) != len(mx.rows[0]) {
 		return nil, fmt.Errorf("cannot select the diagonal of a non square matrix")
@@ -116,8 +107,37 @@ func (mx *matrix) Diagonal() ([]float32, error) {
 	return out, nil
 }
 
-//TODO: Here
-func (mx *matrix) ReplaceSubMatrix(i,j int, newmatrix matrix) (matrix, error) {
-
-	return *mx, nil
+// Returns the submatrix starting from the element a(i,j) to the element a(s,t)
+func (mx *matrix) Submatrix(i,j,s,t int) matrix {
+	var newMatrix matrix
+	for row := i; row <= s; row++ {
+		newMatrix.AddRow(mx.rows[row][j:t+1])
+	}
+	return newMatrix
 }
+
+// Swaps the newmatrix in the mx matrix starting from the element a(i,j).
+// Returns an error if the newmatrix won't fit in mx matrix.
+func (mx *matrix) ReplaceSubMatrix(i,j int, newmatrix matrix) (out matrix, err error) {
+
+	// Checks if the newmatrix fits in the mx one
+	var mxsizerow, mxsizecols = mx.Size()
+	var nmxsizerow, nmxsizecols = newmatrix.Size()
+	if mxsizecols-j < nmxsizecols {
+		return matrix{}, fmt.Errorf("the columns of the new matrix overflow the old ones")
+	}
+	if mxsizerow-i < nmxsizerow {
+		return matrix{}, fmt.Errorf("the rows of the new matrix overflow the old ones")
+	}
+
+	// Creates a copy of the original matrix and starts replacing elements
+	out = *mx 
+	for row := range newmatrix.rows {
+		for col := range newmatrix.rows[row] {
+			out.rows[row+i][col+j] = newmatrix.rows[row][col]
+		}
+	}
+
+	return out, nil
+}
+

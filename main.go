@@ -20,9 +20,13 @@ func main() {
 	mx.Print()
 	fmt.Println()
 
-	
+	var newMatrix = matrix.CreateMatrix()
+	newMatrix.AddRow([]float32{-99,-99,-99})
+	newMatrix.AddRow([]float32{-99,-99,-99})
 
-
-	mx.Print()
-
+	out, err := mx.ReplaceSubMatrix(0,0,newMatrix)
+	if err != nil {
+		fmt.Println(err)
+	}
+	out.Print()
 }
