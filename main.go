@@ -19,7 +19,10 @@ func main() {
 
 	mx.Print()
 	fmt.Println()
-	var sub = mx.Submatrix(2,0,3,3)
-	sub.Print()
+
+	
+
+
+	mx.Print()
 
 }

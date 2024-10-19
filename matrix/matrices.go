@@ -1,3 +1,7 @@
+/*Package used to perform operations with the matrices.
+One should create a matrix object first and then add the rows.
+Columns are not defined as a base property of the object, they are calculated as a method instead.
+This is to prevent the need of updating the columns each time one modifies the rows.*/
 package matrix
 
 import (
@@ -6,24 +10,31 @@ import (
 	"myalgo/utils"
 )
 
-// Base matrix type
+//Base matrix type
 type matrix struct {
 	rows [][]float32
-	cols [][]float32
 }
 
 // Creates an empty matrix object
 func CreateMatrix() matrix {
-	return matrix{nil,nil}
+	return matrix{nil}
 }
 
 func (mx *matrix) Rows() [][]float32 {
 	return mx.rows
 }
 
-func (mx *matrix) Columns() [][]float32 {
-	return mx.cols
-}
+// Returns a new matrix composed by the columns of this matrix
+func (mx *matrix) Columns() (out matrix) {
+	for n := 0; n < len(mx.rows[0]); n++ {
+		var temp []float32
+		for m := range mx.rows {
+			temp = append(temp, mx.rows[m][n])
+		}
+		out.AddRow(temp)
+	}
+	return
+} 
 
 func (mx *matrix) Print() {
 	for r := range mx.rows {
@@ -33,31 +44,18 @@ func (mx *matrix) Print() {
 
 // Returns the size of the matrix by rows and columns
 func (mx *matrix) Size() (int,int) {
-	return len(mx.rows),len(mx.cols)
+	var cols = mx.Columns().rows
+	return len(mx.rows),len(cols)
 }
 
 // Appends the new row at the bottom of the matrix
 func (mx *matrix) AddRow(newRow []float32) error {
-
 	// If at least one row is present, must check for the correct lenght of the new row
 	if mx.rows != nil && len(mx.rows[0]) != len(newRow) {
 		return errors.New("error in adding a new row: incompatible row lenght")
 	}
-
 	// Adds the new row
 	mx.rows = append(mx.rows, newRow)
-
-	// Updates the columns with the new values from the row
-	if mx.cols == nil {
-		for n := range newRow {
-			mx.cols = append(mx.cols, []float32{newRow[n]})
-		}
-	} else {
-		for n := range mx.cols {
-			mx.cols[n] = append(mx.cols[n], newRow[n])
-		}
-	}
-
 	return nil
 }
 
@@ -87,20 +85,10 @@ func (mx *matrix) RemoveRow(i int) {
 		}
 	}
 	mx.rows = mx.rows[:len(mx.rows)-1]
-	// Updates the columns
-	for m := range mx.cols {
-		mx.cols[m] = utils.ArrayRemove(mx.cols[m],i)
-	}
 }
 
 // Removes the j-th column from the matrix, in place
 func (mx *matrix) RemoveColumn(j int) {
-	// Update the columns
-	for c := j+1; c < len(mx.cols); c++ {
-		mx.cols[c-1] = mx.cols[c]
-	}
-	mx.cols = mx.cols[:len(mx.cols)-1]
-	//Update the rows
 	for m := range mx.rows {
 		mx.rows[m] = utils.ArrayRemove(mx.rows[m],j)
 	}
@@ -129,11 +117,7 @@ func (mx *matrix) Diagonal() ([]float32, error) {
 }
 
 //TODO: Here
-func (mx *matrix) updatecolumns () {
-
-}
-
-//TODO: Here
 func (mx *matrix) ReplaceSubMatrix(i,j int, newmatrix matrix) (matrix, error) {
-	
+
+	return *mx, nil
 }
