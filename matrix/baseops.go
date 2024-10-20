@@ -25,26 +25,27 @@ func (mx *matrix) Rows() [][]float32 {
 }
 
 // Returns a new matrix composed by the columns of this matrix
-func (mx *matrix) Columns() (out matrix) {
+func (mx *matrix) Columns() (out [][]float32) {
 	for n := 0; n < len(mx.rows[0]); n++ {
 		var temp []float32
 		for m := range mx.rows {
 			temp = append(temp, mx.rows[m][n])
 		}
-		out.AddRow(temp)
+		out = append(out, temp)
 	}
 	return
 } 
 
-func (mx *matrix) Print() {
+func (mx *matrix) PrintMatrix() {
 	for r := range mx.rows {
 		fmt.Println(mx.rows[r])
 	}
+	fmt.Println()
 }
 
 // Returns the size of the matrix by rows and columns
 func (mx *matrix) Size() (int,int) {
-	var cols = mx.Columns().rows
+	var cols = mx.Columns()
 	return len(mx.rows),len(cols)
 }
 

@@ -10,6 +10,16 @@ func IsNullArray (array []float32) bool {
 	return true
 }
 
+// Returns the index of the first non null element
+func FirstNonNullElement (array []float32) (out int) {
+	for r := range array {
+		if array[r] != 0 {
+			out = r
+		}
+	}
+	return
+}
+
 // Checks if arrays a and b are the same.
 // 
 // It also considers the position of the elements:
