@@ -2,23 +2,37 @@
 package matrix
 
 import (
-	//"fmt"
 	"fmt"
 	"myalgo/utils"
 )
 
 func recursiveElimination (m matrix, startIndex int) matrix {
-	fmt.Println("Stating index:", startIndex)
-	out := m.Submatrix(startIndex,startIndex,len(m.rows)-1,len(m.rows[0])-1)
-	fmt.Println("Considering matrix: ")
-	
-	out.PrintMatrix()
-
-	if startIndex == len(m.rows) {
-		return out
+	// Pivot the first row
+	var prepivot float32 = m.rows[startIndex][startIndex]
+	for entry := range m.rows[startIndex] {
+		var newEntry = m.rows[startIndex][entry]
+		m.rows[startIndex][entry] = newEntry/prepivot
 	}
-	return recursiveElimination(out, startIndex+1)
 
+	// Returns if only one row was modified since that must be the last one
+	if startIndex == len(m.rows)-1 {
+		return m
+	}
+
+	// Works on other rows
+	for row := startIndex+1; row < len(m.rows); row++ {
+		var pivotal float32 = m.rows[row][startIndex]
+		fmt.Println("Pivotal:", pivotal)
+		for s := range m.rows[row] {
+			if s <= startIndex {
+				m.rows[row][s] = 0
+			} else {
+				m.rows[row][s] = m.rows[row][s] - m.rows[startIndex][s] * pivotal
+			}
+			
+		}
+	}
+	return recursiveElimination(m, startIndex+1)
 }
 
 // Returns the minimimum form of the matrix by applying the G.E. algorithm.
@@ -44,12 +58,8 @@ func (mx *matrix) GaussianElimination () (out matrix, err error) {
 		}
 	}
 
-	fmt.Println("Starting recursive elimination on matrix: ")
-	out.PrintMatrix()
-	recursiveElimination(out,0)
+	var a matrix = recursiveElimination(out,0)
 
-
-	return out,nil
-
+	return a,nil
 }
 

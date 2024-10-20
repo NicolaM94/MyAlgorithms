@@ -1,5 +1,6 @@
 package utils
 
+
 // Checks if an array is null, meaning that all its elements are 0s.
 func IsNullArray (array []float32) bool {
 	for a := range array {
@@ -44,3 +45,13 @@ func ArrayRemove (array []float32, index int) []float32 {
 	return array[:len(array)-1]
 }
 
+// Inserts an element at index index into the array
+func ArrayInsert (array []float32, index int, element float32) []float32 {
+	var out []float32
+	out = array[:index]
+	out = append(out, element)
+	for i := range array[index+1:] {
+		out = append(out, array[i])
+	}
+	return out
+}
