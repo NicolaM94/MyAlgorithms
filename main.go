@@ -16,11 +16,5 @@ func main() {
 	mx.AddRow(row3)
 	mx.AddRow(row4)
 
-
-	ge, err := mx.GaussianElimination()
-	if err != nil {
-		panic(err)
-	}
-	ge.PrintMatrix()
 	
 }

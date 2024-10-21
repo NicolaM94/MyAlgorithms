@@ -142,3 +142,18 @@ func (mx *matrix) ReplaceSubMatrix(i,j int, newmatrix matrix) (out matrix, err e
 	return out, nil
 }
 
+// Calculate the transposed matrix from mx
+func (mx *matrix) Transpose () matrix {
+	var out matrix
+	var cols [][]float32 = mx.Columns()
+
+	for c := range cols {
+		var temp []float32
+		for el := range cols[c] {
+			temp = append(temp, cols[c][el])
+		}
+		out.AddRow(temp)
+	}
+	return out
+}
+ 
