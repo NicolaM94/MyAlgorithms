@@ -16,5 +16,6 @@ func main() {
 	mx.AddRow(row3)
 	mx.AddRow(row4)
 
-	
+	mx.Sum(mx)
+	mx.PrintMatrix()
 }

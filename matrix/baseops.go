@@ -159,5 +159,9 @@ func (mx *matrix) Transpose () {
  
 // Sum the matrix b in place
 func (mx *matrix) Sum (b matrix) {
-
+	for i := range mx.rows {
+		for j := range mx.rows[i] {
+			mx.rows[i][j] = mx.rows[i][j]+b.rows[i][j]
+		}
+	}
 }
