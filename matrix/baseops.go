@@ -108,6 +108,16 @@ func (mx *matrix) Diagonal() ([]float32, error) {
 	return out, nil
 }
 
+// Checks if the matrix is an identity
+func (mx *matrix) IsIdentity () bool {
+	for row := range mx.rows {
+		if !utils.IsNullArray(mx.rows[row][0:row]) || !utils.IsNullArray(mx.rows[row][row+1:]) || mx.rows[row][row] != 1 {
+			return false
+		}
+	}
+	return true
+}
+
 // Returns the submatrix starting from the element a(i,j) to the element a(s,t)
 func (mx *matrix) Submatrix(i,j,s,t int) matrix {
 	var newMatrix matrix
