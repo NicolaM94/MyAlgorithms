@@ -142,8 +142,8 @@ func (mx *matrix) ReplaceSubMatrix(i,j int, newmatrix matrix) (out matrix, err e
 	return out, nil
 }
 
-// Calculate the transposed matrix from mx
-func (mx *matrix) Transpose () matrix {
+// Calculate the transposed matrix from mx in place
+func (mx *matrix) Transpose () {
 	var out matrix
 	var cols [][]float32 = mx.Columns()
 
@@ -154,6 +154,10 @@ func (mx *matrix) Transpose () matrix {
 		}
 		out.AddRow(temp)
 	}
-	return out
+	mx = &out
 }
  
+// Sum the matrix b in place
+func (mx *matrix) Sum (b matrix) {
+
+}
