@@ -1,22 +1,27 @@
 package main
 
 import (
+	
 	"myalgo/matrix"
+	
 )
 
 func main() {
-	var row1 = []float32{2,4,0,-2,-6}
-	var row2 = []float32{0,8,0,-4,-2}
-	var row3 = []float32{1,0,0,2,1}
-	var row4 = []float32{0,0,0,0,0}
+	var row1 = []float32{0,1}
+	var row2 = []float32{2,-1}
+	var row3 = []float32{1,7}
 	
 	var mx = matrix.CreateMatrix()
 	mx.AddRow(row1)
 	mx.AddRow(row2)
 	mx.AddRow(row3)
-	mx.AddRow(row4)
 
-	mx.ScaleBy(2.5)
+	var mb = matrix.CreateMatrix()
+	mb.AddRow([]float32{9,-1})
+	mb.AddRow([]float32{3,-2})
 
+	mx.MultiplyBy(mb)
 	mx.PrintMatrix()
+
+	
 }

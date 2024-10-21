@@ -1,7 +1,7 @@
-//Package used to perform operations with the matrices.
-//One should create a matrix object first and then add the rows.
-//Columns are not defined as a base property of the object, they are calculated as a method instead.
-//This is to prevent the need of updating the columns each time one modifies the rows.
+// Package used to perform operations with the matrices.
+// One should create a matrix object first and then add the rows.
+// Columns are not defined as a base property of the object, they are calculated as a method instead.
+// This is to prevent the need of updating the columns each time one modifies the rows.
 package matrix
 
 import (
@@ -149,9 +149,7 @@ func (mx *matrix) Transpose () {
 
 	for c := range cols {
 		var temp []float32
-		for el := range cols[c] {
-			temp = append(temp, cols[c][el])
-		}
+		temp = append(temp, cols[c]...)
 		out.AddRow(temp)
 	}
 	mx = &out
@@ -166,14 +164,31 @@ func (mx *matrix) Sum (b matrix) {
 	}
 }
 
+// Scales a row of mx by a constant factor alpha
 func (mx *matrix) ScaleRowBy (alpha float32, rowindex int) {
 	for r := range mx.rows[rowindex] {
 		mx.rows[rowindex][r] = mx.rows[rowindex][r] * alpha
 	}
 }
 
+// Scales the whole mx by a constant factor alpha
 func (mx *matrix) ScaleBy (alpha float32) {
 	for r := range mx.rows {
 		mx.ScaleRowBy(alpha, r)
 	}
+}
+
+// Multiplies mx for a second matrix B
+// Returns error if the multiplication is impossible
+func (mx *matrix) MultiplyBy (B matrix) error {
+	var out matrix
+	for r := range mx.rows {
+		var tempRow []float32
+		for _,c := range B.Columns() {
+			tempRow = append(tempRow, utils.VectorMultiply(mx.rows[r],c))
+		}
+		out.AddRow(tempRow)
+	}
+	*mx = out
+	return nil
 }

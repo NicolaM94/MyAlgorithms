@@ -55,3 +55,11 @@ func ArrayInsert (array []float32, index int, element float32) []float32 {
 	}
 	return out
 }
+
+func VectorMultiply (A, B []float32) float32 {
+	var out float32
+	for i := range A {
+		out += A[i]*B[i]
+	}
+	return out
+}
