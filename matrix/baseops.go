@@ -165,3 +165,15 @@ func (mx *matrix) Sum (b matrix) {
 		}
 	}
 }
+
+func (mx *matrix) ScaleRowBy (alpha float32, rowindex int) {
+	for r := range mx.rows[rowindex] {
+		mx.rows[rowindex][r] = mx.rows[rowindex][r] * alpha
+	}
+}
+
+func (mx *matrix) ScaleBy (alpha float32) {
+	for r := range mx.rows {
+		mx.ScaleRowBy(alpha, r)
+	}
+}
