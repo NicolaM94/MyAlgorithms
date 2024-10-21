@@ -2,6 +2,17 @@
 // One should create a matrix object first and then add the rows.
 // Columns are not defined as a base property of the object, they are calculated as a method instead.
 // This is to prevent the need of updating the columns each time one modifies the rows.
+// Example driver code: 
+/* func main() {
+	var row1 = []float32{0,1}
+	var row2 = []float32{2,-1}
+	var row3 = []float32{1,7}
+	
+	var mx = matrix.CreateMatrix()
+	mx.Columns()
+	mx.RemoveRow(0)
+	mx.GaussianElimination()
+} */
 package matrix
 
 import (
