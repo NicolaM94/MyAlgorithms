@@ -2,10 +2,10 @@
 package matrix
 
 import (
-	"fmt"
 	"myalgo/utils"
 )
 
+// TODO: Non funziona se nella riga l'elemento ij è zero, perchè da n/0 -> inf
 func recursiveElimination (m matrix, startIndex int) matrix {
 	// Pivot the first row
 	var prepivot float32 = m.rows[startIndex][startIndex]
@@ -22,7 +22,7 @@ func recursiveElimination (m matrix, startIndex int) matrix {
 	// Works on other rows
 	for row := startIndex+1; row < len(m.rows); row++ {
 		var pivotal float32 = m.rows[row][startIndex]
-		fmt.Println("Pivotal:", pivotal)
+		
 		for s := range m.rows[row] {
 			if s <= startIndex {
 				m.rows[row][s] = 0
