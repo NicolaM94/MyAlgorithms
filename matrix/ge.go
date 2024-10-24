@@ -29,7 +29,6 @@ func recursiveElimination (m matrix, startIndex int) matrix {
 			} else {
 				m.rows[row][s] = m.rows[row][s] - m.rows[startIndex][s] * pivotal
 			}
-			
 		}
 	}
 	return recursiveElimination(m, startIndex+1)
